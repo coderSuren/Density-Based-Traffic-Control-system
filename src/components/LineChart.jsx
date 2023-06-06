@@ -59,12 +59,11 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
       axisRight={null}
       axisBottom={{
         orient: "bottom",
-        tickSize: 0,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation", // added
+        tickSize: 5, // added
+        tickValues: 'every 5th timestamp',
+        legend: 'Timestamp',
         legendOffset: 36,
-        legendPosition: "middle",
+        legendPosition: 'middle',
       }}
       axisLeft={{
         orient: "left",

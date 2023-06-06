@@ -185,7 +185,7 @@ const Dashboard = () => {
           </Box>
           {mockTransactions.map((transaction, i) => (
             <Box
-              key={`${transaction.txId}-${i}`}
+              key={`${transaction.ID}-${i}`}
               display="flex"
               justifyContent="space-between"
               alignItems="center"
@@ -198,10 +198,10 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {transaction.ID}
                 </Typography>
                 <Typography color={colors.grey[100]}>
-                  {transaction.user}
+                  {transaction.Timestamp}
                 </Typography>
               </Box>
               <Box color={colors.grey[100]}>{transaction.date}</Box>

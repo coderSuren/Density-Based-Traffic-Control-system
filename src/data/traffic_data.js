@@ -1,4 +1,11 @@
-export let trafficData = [];
+let trafficData = [];
+let mockTransactions = [];
+let category_counts = {
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0
+}
 
 fetch('https://g8swxar75d.execute-api.us-east-1.amazonaws.com/traffic_route')
   .then(response => {
@@ -8,10 +15,23 @@ fetch('https://g8swxar75d.execute-api.us-east-1.amazonaws.com/traffic_route')
     return response.json();
   })
   .then(data => {
+    
+    
     // Process the data as needed
-    trafficData = data; // Assign the fetched array to trafficData
-    console.log(trafficData);
+    const reversedData = [...data].reverse();
+    trafficData=reversedData;
+    
+    mockTransactions = reversedData.slice(0, 30);
+    for (const item of data) {
+      const category = item.open;
+      category_counts[category] += 1;
+    }
+    // add an object with negative values for the line chart to mockTransactions
+    
   })
   .catch(error => {
     console.error('Error:', error);
   });
+
+// export default trafficData;
+export { trafficData , mockTransactions, category_counts};

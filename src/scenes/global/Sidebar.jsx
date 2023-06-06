@@ -191,16 +191,17 @@ const Sidebar = () => {
               Charts
             </Typography>
             <Item
-              title="Bar Chart"
-              to="/bar"
+              title="Hourly Bar Chart"
+              to="/bar/bar1"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
+            
             <Item
-              title="Pie Chart"
-              to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
+              title="Daily Bar Chart"
+              to="/bar/bar2"
+              icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
