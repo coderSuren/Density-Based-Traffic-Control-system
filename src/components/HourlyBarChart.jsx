@@ -76,7 +76,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Total Signals", // changed
+        legend: isDashboard ? undefined : "Timestamp (HH)", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -84,7 +84,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Timestamp (HH)", // changed
+        legend: isDashboard ? undefined : "Total Signals", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}

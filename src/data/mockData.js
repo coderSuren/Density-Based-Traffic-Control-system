@@ -51,7 +51,7 @@ export const mockBarData = [
 
 const openSumsByTimestamp= trafficData.reduce((acc, item) => {
   // use the hour time in Timestamp as the key for the accumulator object
-  const Timestamp = item.Timestamp.slice(14, 16);
+  const Timestamp = item.Timestamp.slice(11, 13);
   const open = item.open;
  
    if (!acc[Timestamp]) {
@@ -97,7 +97,7 @@ export const mockHourlyData = [
 
 export const mockLineData = [
   {
-    id: "roa1",
+    id: "road1",
     color: "red",
     data: mockTransactions.map((item) => ({
       x: item.Timestamp,
