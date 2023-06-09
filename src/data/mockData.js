@@ -3,8 +3,9 @@ import {mockTransactions} from "./traffic_data"
 import { trafficData } from "./traffic_data";
 console.log("mockTransactions", mockTransactions);
 
-const openSumsByDate= trafficData.reduce((acc, item) => {
- const Timestamp = item.Timestamp.slice(0, 10);
+const openSumsByDate = (async) =>{
+  return  trafficData.reduce((acc, item) => {
+  const Timestamp = item.Timestamp.slice(0, 10);
   const open = item.open;
 
   if (!acc[Timestamp]) {
@@ -29,8 +30,11 @@ const openSumsByDate= trafficData.reduce((acc, item) => {
 
   return acc;
 }, {});
+}
 
-export const mockBarData = [
+export const mockBarData= (async) =>{
+
+  return [
   // iterate through the openSumsByDate object and create an array of objects that has the following shape:
   // {
   //   Timestamp: "2020-01-01",
@@ -40,18 +44,20 @@ export const mockBarData = [
   //   lane4: 0
   // }
 
-  ...Object.keys(openSumsByDate).map((key) => ({
-    Timestamp: key,
-    lane1: openSumsByDate[key].lane1,
-    lane2: openSumsByDate[key].lane2,
-    lane3: openSumsByDate[key].lane3,
-    lane4: openSumsByDate[key].lane4
-  }))
-];
+    ...Object.keys(openSumsByDate).map((key) => ({
+      Timestamp: key,
+      lane1: openSumsByDate[key].lane1,
+      lane2: openSumsByDate[key].lane2,
+      lane3: openSumsByDate[key].lane3,
+      lane4: openSumsByDate[key].lane4
+    }))
+  ];
+}
 
-const openSumsByTimestamp= trafficData.reduce((acc, item) => {
+const openSumsByTimestamp = (async) =>{
+  return  trafficData.reduce((acc, item) => {
   // use the hour time in Timestamp as the key for the accumulator object
-  const Timestamp = item.Timestamp.slice(11, 13);
+  const Timestamp = item.Timestamp.slice(11, 16);
   const open = item.open;
  
    if (!acc[Timestamp]) {
@@ -73,11 +79,15 @@ const openSumsByTimestamp= trafficData.reduce((acc, item) => {
      default:
        break;
    }
- 
+   
    return acc;
  }, {});
 
-export const mockHourlyData = [
+}
+
+export const mockHourlyData = (async) =>{
+
+  return [
   // iterate through the opensumsbyTimestamp object and create an array of objects that has the following shape:
   // {
   //   Timestamp: "HH",
@@ -94,8 +104,11 @@ export const mockHourlyData = [
     lane4: openSumsByTimestamp[key].lane4
   }))
 ]
+}
+//convert mockline data
+export const mockLineData = (async) =>{
 
-export const mockLineData = [
+  return [
   {
     id: "road1",
     color: "red",
@@ -129,3 +142,4 @@ export const mockLineData = [
     }))
   },
 ];
+}

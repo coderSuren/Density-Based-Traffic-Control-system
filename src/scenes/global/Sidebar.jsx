@@ -34,8 +34,9 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     </MenuItem>
   );
 };
-
+// set the height of the sidebar to max height if screen height increases
 const Sidebar = () => {
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -44,6 +45,7 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
@@ -70,6 +72,7 @@ const Sidebar = () => {
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
+              
             }}
           >
             {!isCollapsed && (

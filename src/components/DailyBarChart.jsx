@@ -1,11 +1,28 @@
+import React, { useEffect, useState } from 'react';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as data } from "../data/mockData";
+import { mockBarData } from "../data/mockData";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const processedData = mockBarData();
+        setData(processedData);
+      } catch (error) {
+        // Handle error if necessary
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
 
   return (
     <ResponsiveBar

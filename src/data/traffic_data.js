@@ -18,10 +18,12 @@ fetch('https://g8swxar75d.execute-api.us-east-1.amazonaws.com/traffic_route')
     
     
     // Process the data as needed
-    const reversedData = [...data].reverse();
-    trafficData=reversedData;
+    // const reversedData = [...data].reverse();
+    // reversedData.shift();
+    data.pop();
+    trafficData=data;
     
-    mockTransactions = reversedData.slice(0, 30);
+    mockTransactions = data.slice(0, 50);
     for (const item of data) {
       const category = item.open;
       category_counts[category] += 1;

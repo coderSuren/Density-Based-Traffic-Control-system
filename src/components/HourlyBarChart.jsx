@@ -1,11 +1,27 @@
+import React, { useEffect, useState } from 'react';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockHourlyData as data } from "../data/mockData";
+import { mockHourlyData} from "../data/mockData";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const processedData = mockHourlyData();
+        setData(processedData);
+      } catch (error) {
+        // Handle error if necessary
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <ResponsiveBar
@@ -76,7 +92,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Timestamp (HH)", // changed
+        legend: isDashboard ? undefined : "Timestamp (HH:MM)", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
