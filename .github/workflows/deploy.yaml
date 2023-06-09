@@ -19,3 +19,5 @@ jobs:
       uses: bitovi/github-actions-react-to-ghp@v1.2.0
       with:
         path: build
+      env:
+        NPM_CONFIG_LEGACY_PEER_DEPS: true
