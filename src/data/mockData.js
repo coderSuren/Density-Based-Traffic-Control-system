@@ -1,4 +1,3 @@
-import { tokens } from "../theme";
 import {mockTransactions} from "./traffic_data"
 import { trafficData } from "./traffic_data";
 console.log("mockTransactions", mockTransactions);
@@ -96,14 +95,15 @@ export const mockHourlyData = (async) =>{
   //   lane3: 0,
   //   lane4: 0
   // }
-  ...Object.keys(openSumsByTimestamp).map((key) => ({
-    Timestamp: key,
-    lane1: openSumsByTimestamp[key].lane1,
-    lane2: openSumsByTimestamp[key].lane2,
-    lane3: openSumsByTimestamp[key].lane3,
-    lane4: openSumsByTimestamp[key].lane4
-  }))
-]
+
+    ...Object.keys(openSumsByTimestamp).map((key) => ({
+      Timestamp: key,
+      lane1: openSumsByTimestamp[key].lane1,
+      lane2: openSumsByTimestamp[key].lane2,
+      lane3: openSumsByTimestamp[key].lane3,
+      lane4: openSumsByTimestamp[key].lane4
+    }))
+  ];
 }
 //convert mockline data
 export const mockLineData = (async) =>{

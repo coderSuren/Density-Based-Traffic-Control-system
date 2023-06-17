@@ -4,25 +4,28 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { mockLineData} from "../data/mockData";
 
-
-
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
-
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const processedData = mockLineData();
-        setData(processedData);
-      } catch (error) {
-        // Handle error if necessary
-        console.error(error);
-      }
-    };
+    const timer = setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          const processedData = mockLineData();
+          setData(processedData);
+        } catch (error) {
+          // Handle error if necessary
+          console.error(error);
+        }
+      };
+  
+      fetchData();
 
-    fetchData();
+      console.log('useEffect executed after 5 seconds');
+    }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
